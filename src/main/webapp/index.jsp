@@ -9,20 +9,33 @@
 <html>
 <head>
     <title>Title</title>
-    <meta http-equiv="Access-Control-Allow-Origin" content="*">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>登陆界面</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <h1>登录页面</h1>
-用户名：<input id="username" type="text" name="username"/><p/>
-密码：<input id="password" type="password" name="password"/></p>
-<input type="text" id="text">
-<button id="btn" type="button">登录</button><p/>
-<span id="info"></span>
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<div class="input-group" style="width: 400px">
+    <span class="input-group-addon" id="basic-addon1">账户：</span>
+    <input id="username" type="text" class="form-control" placeholder="输入用户名：" aria-describedby="basic-addon1">
+</div>
+<div class="input-group" style="width: 400px">
+    <span class="input-group-addon" id="basic-addon2">密码：</span>
+    <input id="password" type="password" class="form-control" placeholder="输入密码：" aria-describedby="basic-addon2">
+</div>
+<button id="btn" type="button" class="btn btn-primary" style="width: 400px">登陆</button>
+<div id="info" class="alert alert-success" role="alert">...</div>
+
+<script type="text/javascript" src="static/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#btn").click(function(){
-            console.log("123");
             $.ajax({
                 //提交数据的类型 POST GET
                 type:"POST",
@@ -31,7 +44,7 @@
                 //提交的数据
                 data:{username:$("#username").val(),password:$("#password").val()},
                 //返回数据的格式
-                datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+                datatype: "json",
                 //成功返回之后调用的函数
                 success:function (data){
                     $("#info").html(data.status);
