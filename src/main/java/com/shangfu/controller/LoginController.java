@@ -20,8 +20,9 @@
 
         @RequestMapping(value="/login" , method= RequestMethod.POST , produces="application/json;charset=UTF-8")
         public @ResponseBody Map<String,String> test(@RequestParam("username") String username, @RequestParam("password") String password,HttpServletResponse response){
+            System.out.println("登陆开始");
             Map<String,String> map = new HashMap<String, String>();
-           // userDao.insert(new Student("xiao"));//这里只是为了测试数据库！
+            userDao.insert(new Student("xiao"));//这里只是为了测试数据库！
             if(username.equals("hyh")&&password.equals("123")) {
                 map.put("status", "success");
                 return map;
